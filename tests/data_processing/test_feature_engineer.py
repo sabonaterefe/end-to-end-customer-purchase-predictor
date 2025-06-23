@@ -1,13 +1,15 @@
+"""Unit tests for the feature_engineer preprocessing function."""
+
 import sys
 import os
 import pandas as pd
 
-# Ensure the src directory is in the Python path
+# Ensure src directory is in the path
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 if project_root not in sys.path:
     sys.path.append(project_root)
 
-from src.data_processing.feature_engineer import feature_engineer
+from src.data_processing.feature_engineer import feature_engineer  # noqa: E402
 
 
 def test_feature_engineer_preserves_row_count():
@@ -53,7 +55,6 @@ def test_feature_engineer_adds_expected_columns():
     })
     result = feature_engineer(df)
 
-    # Only non-baseline dummy features expected due to drop='first'
     expected_columns = {
         "Age",
         "AnnualIncome",
